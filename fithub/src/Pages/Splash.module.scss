@@ -1,0 +1,54 @@
+.splash {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.upper,
+.lower {
+  width: 100%;
+  object-fit: cover;
+}
+
+.upper {    
+    height: 57%;
+    object-position: center top; }
+.lower { height: 43%; }
+
+.text {
+  position: absolute;
+  top: 34%;
+  left: 0;
+  color: white;
+
+  h1 {
+    font-size: 48px;
+    margin: 0;
+    padding-left: 30px;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  span {
+    width: 60px;
+    height: 2px;
+    background: white;
+  }
+}
+
+button {
+  position: absolute;
+  right: -5px;
+  bottom: 120px;
+  padding: 18px 30px;
+  border: none;
+  border-radius: 5px;
+  background: #f0eeee;
+  font-size: 18px;
+}

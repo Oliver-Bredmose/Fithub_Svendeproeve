@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router'
-import { SplashScreen } from './Pages/Splash_screen'
+import { Splashscreen } from './Pages/Splashscreen'
 import { Home } from './Pages/Home'
 import { ClassDetails } from './Pages/Class_Details'
 import { Search } from './Pages/Search'
@@ -11,11 +11,11 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-      <Route path="/" index element={<SplashScreen/>}/>
-      <Route path="/home" index element={<Home/>}/>
-      <Route path="/classdetails" index element={<ClassDetails/>}/>
-      <Route path="/search" index element={<Search/>}/>
-      <Route path="/myschedule" index element={<MySchedule/>}/>
+      <Route path="/" element={<Splashscreen />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/classdetails" element={<ClassDetails />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/myschedule" element={<MySchedule />} />
       </Routes>
     </BrowserRouter>
      

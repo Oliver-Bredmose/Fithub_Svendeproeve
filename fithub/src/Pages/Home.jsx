@@ -1,32 +1,45 @@
-import React, { useState, useEffect } from "react";
+import {React, useState, useEffect } from "react";
+import style from "./../Pages/Home.module.scss"
+
+const API = "http://localhost:3000";
 
 export function Home() {
   const [items, setItems] = useState([]);
-  const [dataIsLoaded, setDataIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/teams")
-      .then((res) => {
-        if (!res.ok) throw new Error(res.status);
-        return res.json();
-      })
-      .then((json) => {
+    const hentTeams = async () => {
+      try {
+        const res = await fetch(API + "/api/teams");
+        const json = await res.json();
         setItems(json);
-        setDataIsLoaded(true);
-      })
-      .catch((err) => console.error(err));
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    hentTeams();
   }, []);
 
   return (
-    <div>
-      {!dataIsLoaded ? (
-        <h1>Side svare ikke</h1>
-      ) : (
+    <div className={style.calsses}>
+      {error && <p>Kunne ikke hente teams: {error}</p>}
+      {items.length > 0 ? (
         <ul>
           {items.map((team) => (
-            <li key={team.id}>{team.name}</li>
+            <li key={team.id}>
+              <h2>{team.name}</h2>
+              <p>{team.user?.description}</p>
+              {team.image?.url && (
+                <img src={API + team.image.url} alt={team.name} />
+              )}
+            </li>
           ))}
         </ul>
+      ) : (
+        !error && !isLoading && <p>Ingen teams fundet</p>
       )}
     </div>
   );
