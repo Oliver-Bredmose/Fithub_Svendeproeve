@@ -1,8 +1,52 @@
 .calsses {
-  display: flex;
-  background: red;
-    img{
-        width: 200px;
-    }
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
 
+  img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  li:first-child img {
+    height: 380px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  li:first-child {
+    grid-column: span 2;
+  }
+
+    li {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0.5rem 0 0;
+  }
+
+  li:first-child h2 {
+    position: absolute;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    margin: 0;
+    color: #fff;
+    font-size: 2.5rem;
+  }
 }

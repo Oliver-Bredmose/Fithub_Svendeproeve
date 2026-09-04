@@ -1,4 +1,5 @@
 import {React, useState, useEffect } from "react";
+import { Link } from "react-router";
 import style from "./../Pages/Home.module.scss"
 
 const API = "http://localhost:3000";
@@ -30,11 +31,13 @@ export function Home() {
         <ul>
           {items.map((team) => (
             <li key={team.id}>
+              <Link to={`/classdetails/${team.id}`}>
               <h2>{team.name}</h2>
               <p>{team.user?.description}</p>
               {team.image?.url && (
                 <img src={API + team.image.url} alt={team.name} />
               )}
+              </Link>
             </li>
           ))}
         </ul>
